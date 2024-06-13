@@ -81,6 +81,5 @@ curl http://localhost:3000/api/generate?count=5
     "img" : "https://randomuser.me/api/portraits/men/6.jpg",
     "CPF" : "123.456.789-10",
   },
-  // Additional records...
 ]
 ```
