@@ -49,10 +49,10 @@ You can also generate data programmatically using the provided API endpoints.
 
 **Generate Random Person Data**
 
-. Endpoint: /api/generate
-. Method: GET
-. Parameters:
-    . count (optional): Number of person records to generate (default is 1).
+- Endpoint: /api/generate
+- Method: GET
+- Parameters:
+    - count (optional): Number of person records to generate (default is 1).
 
 **Example Request:**
 
