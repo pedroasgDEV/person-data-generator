@@ -50,7 +50,7 @@ class Person {
     }
 
     set address( address = {} ) {  
-        if(typeof address === 'object') throw new TypeError("TYPE_ERRO: addres is a array");
+        if(typeof address !== 'object') throw new TypeError("TYPE_ERRO: addres is a object");
         this.address = address;
     }
 

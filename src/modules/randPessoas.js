@@ -30,7 +30,7 @@ function writeFile ( qnt = 0 ) {
 //Lé arquivo
 async function readFile () {
     const json = await fs.readFile(file, 'utf8'); //Lé os arquvios
-    return (!json) ? '' : JSON.parse(json); //Formata o que leu e retorna
+    return (!json) ? [] : JSON.parse(json); //Formata o que leu e retorna
 }
 
 //Add pessoas ao arquivo
