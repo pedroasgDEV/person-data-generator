@@ -32,9 +32,4 @@ class Cpf {
     }
 }
 
-exports.Cpf = Cpf;cell
-cell
-cell
-cell
-cell
-cell
+exports.Cpf = Cpf;
