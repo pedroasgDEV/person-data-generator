@@ -9,12 +9,17 @@ class Address{
 
     //Constructor
     constructor (number = -1, street = "NOSTREET", city = "NOCITY", state = "NOSATATE", country = "NOCOUNTRY", postcode = -1){
-        this.number = number;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.country = country
-        this.postcode = postcode;
+        try {
+            this.number = number;
+            this.street = street;
+            this.city = city;
+            this.state = state;
+            this.country = country
+            this.postcode = postcode;
+        }
+        catch (e){
+            throw new Error("ERRO: object cannot be created\n" + e);
+        }
     }
 
     //Methods
@@ -67,3 +72,5 @@ class Address{
         this.postcode = postcode;
     }
 }
+
+exports.Address = Address;
