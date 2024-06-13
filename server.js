@@ -15,6 +15,7 @@ app.listen(3000);
 
 //TODO reformular as rotas e add render
 //TODO add viwer
+//TODO add module to convert json em array
 //TODO finalisar frontend
 //TODO finalisar api
 //TODO integrar tudo
