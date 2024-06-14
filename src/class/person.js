@@ -1,6 +1,6 @@
 const Cpf = require("./cpf").Cpf;
-
-class Person {
+const Address = require("./address").Address;
+class Person{
 
     //Atributes
     name = "NONAME";
@@ -11,18 +11,30 @@ class Person {
     #cpf;
 
     //Methods
-    constructor( name = "NONAME", email = "NOEMAIL", phone = "NOCELL", address = {}, img = "NOIMG" ) {
+    constructor( name = "NONAME", email = "NOEMAIL", phone = "NOCELL", 
+        number = -1, street = "NOSTREET", city = "NOCITY", state = "NOSATATE",
+        country = "NOCOUNTRY", postcode = -1, img = "NOIMG" ) {
         try{
             this.name = name;
             this.email = email;
             this.phone = phone;
-            this.address = address;
+            this.address = new Address(number, street, city, state, country, postcode);
             this.img = img;
             this.#cpf = new Cpf();
         }
         catch(e){
             throw new Error("ERRO: object cannot be created\n" + e);
         } 
+    }
+
+    toString() {
+        return `
+        Name: ${this.name}\n
+        CPF: ${this.#cpf.toString()}\n
+        Email: ${this.email}\n
+        phone: ${this.phone}\n
+        Address: ${this.address.toString()}
+        `
     }
 
     //Getters
