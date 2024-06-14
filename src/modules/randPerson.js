@@ -1,17 +1,8 @@
 //Modulos
 const fs = require("fs").promises;
 const path = require("path");
-const axios = require("axios");
-
-const file = path.resolve(__dirname, '..', '..', 'public', 'docs', 'randPessoas.json'); //Caminho do arquivo local
-const href = "https://randomuser.me/api/?results="; //Link que gera pessoas e retorna um json
-
-//Faz a requisição no site
-async function getPessoas ( qnt ) {
-    if(!Number.isInteger(qnt)) throw new TypeError("A qunatidade precisa ser um numero");
-    const json = await axios(href + qnt); //Faz a requisição de um json com dados de pessoas geradas aleatoriamente
-    return json.data.results; //Retorna o que leu
-}
+const getPerson = require("./getPerson").getPerson;
+const file = path.resolve(__dirname, '..', '..', 'public', 'docs', 'randPerson.json'); //Caminho do arquivo local
 
 //Grava os json no arquivo local
 async function gravaArquivo ( json ) {
@@ -19,10 +10,10 @@ async function gravaArquivo ( json ) {
     return await fs.writeFile(file, format, { flag : 'w'}); //Grava o json no arquivo
 }
 
-//Escreve no arquivo pessoas.json
+//Escreve no arquivo person.json
 function writeFile ( qnt = 0 ) {
     if (qnt == 0) return clearFile();
-    return getPessoas(qnt) //Requisita o json do site
+    return getPerson(qnt) //Requisita o json do site
     .then(json => gravaArquivo(json)) //Grava no arquivo o json
     .catch(e => console.error(e));
 }
@@ -33,11 +24,11 @@ async function readFile () {
     return (!json) ? [] : JSON.parse(json); //Formata o que leu e retorna
 }
 
-//Add pessoas ao arquivo
+//Add person ao arquivo
 async function updateFile ( qnt = 0 ) {
 
     //Pega os novos dados
-    const jsonOut = await getPessoas(qnt).catch(e => console.error(e));; //Requisita o json do site
+    const jsonOut = await getPerson(qnt).catch(e => console.error(e));; //Requisita o json do site
 
 
     //Pega os dados do arquivo

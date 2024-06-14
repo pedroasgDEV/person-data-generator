@@ -1,5 +1,5 @@
 //modulos
-const writeFile = require("../modules/randPessoas").write;
+const writeFile = require("../modules/randPerson").write;
 
 function get (req, res) {
     count = Number(req.query.count);
