@@ -10,9 +10,8 @@ async function gravaArquivo ( json ) {
     return await fs.writeFile(file, format, { flag : 'w'}); //Grava o json no arquivo
 }
 
-//Escreve no arquivo person.json
-function writeFile ( qnt = 0 ) {
-    if (qnt == 0) return clearFile();
+//Escreve no arquivo
+function writeFile ( qnt = 1 ) {
     return getPerson(qnt) //Requisita o json do site
     .then(json => gravaArquivo(json)) //Grava no arquivo o json
     .catch(e => console.error(e));
@@ -21,33 +20,24 @@ function writeFile ( qnt = 0 ) {
 //Lé arquivo
 async function readFile () {
     const json = await fs.readFile(file, 'utf8'); //Lé os arquvios
-    return (!json) ? [] : JSON.parse(json); //Formata o que leu e retorna
+    return JSON.parse(json); //Formata o que leu e retorna
 }
 
 //Add person ao arquivo
 async function updateFile ( qnt = 0 ) {
 
-    //Pega os novos dados
-    const jsonOut = await getPerson(qnt).catch(e => console.error(e));; //Requisita o json do site
-
-
-    //Pega os dados do arquivo
-    const jsonIn = await readFile(); //Requisita os dados do arquivo
-
-    const json = [...jsonIn, ...jsonOut]; //Adiciona novos dados ao fim do json que estava no arquivo
-
-    return await gravaArquivo(json); //Sobreescreve o arquivo existente
+    //Pega os novos dadosJSON.stringify(json, '', 2)o(json); //Sobreescreve o arquivo existente
 }
 
 //Limpa o arquivo
-const clearFile = () => fs.writeFile(file, '', { flag : 'w'});
+const clearFile = () => fs.writeFile(file, JSON.stringify([], '', 2), { flag : 'w'});
 
 //manipulação do arquivo pelo terminal
 const args = process.argv.slice(2);
 switch(args[0]){
     case "clear": clearFile(); console.log("Arquivo limpo"); break; //limpa o arquivo
     case "read": readFile().then(json => 
-        (json) ? json.forEach((val, index) => console.log(`${index}: ${Object.values(val.name).join(' ')}`)) :
+        (json) ? json.forEach((val, index) => console.log(`${index}: ${val.name}`)) :
                     console.log("Arquivo vazio")
     ); break; //Mostra o arquivo no terminal
     case "write": writeFile(Number(args[1])); break; //Escreve o arquivo com o proximo comando
