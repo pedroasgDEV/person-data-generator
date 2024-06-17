@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "arq": "node src/modules/randPessoas.js",
+    "arq": "node src/modules/randPerson.js",
     "run": "nodemon server.js & webpack -w",
     "server" :  "nodemon server.js"
   },

@@ -69,10 +69,8 @@ curl http://localhost:3000/api/generate?count=5
     "email": "okan.akgul@example.com",
     "phone": "555-1234",
     "adress": {
-        "street": {
-            "number": 4422,
-            "name": "Doktorlar Cd"
-        },
+        "number": 4422,
+        "street": "Doktorlar Cd",
         "city": "Çankırı",
         "state": "Uşak",
         "country": "Turkey",
