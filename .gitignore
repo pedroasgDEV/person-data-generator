@@ -1,2 +1,3 @@
 node_modules
 .gitignore
+/public/docs/randPerson.json
