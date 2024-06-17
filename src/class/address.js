@@ -4,7 +4,8 @@ class Address{
     street = "NOSTREET";
     city = "NOCITY";
     state = "NOSATATE";
-    country = "NOCOUNTRY"
+    country = "NOCOUNTRY";
+    description = "NODESCRIPTION";
     postcode = -1;
 
     //Constructor
@@ -20,20 +21,17 @@ class Address{
         catch (e){
             throw new Error("ERRO: object cannot be created\n" + e);
         }
+
+        this.description = this.toString();
     }
 
     //Methods
     toString() {
-        return `
-        ${this.number},  
-        ${this.street},  
-        ${this.city},  
-        ${this.state},  
-        ${this.country}
-        `
+        return `${this.number}, ${this.street}, ${this.city}, ${this.state}, ${this.country}`;
     }
 
     //getters
+    get description () { return this.description; }
     get number () { return this.number; }
     get street () { return this.street; }
     get city () { return this.city; }

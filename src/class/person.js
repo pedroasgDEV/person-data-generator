@@ -8,7 +8,8 @@ class Person{
     phone = "NOCELL";
     address = {};
     img = "NOIMG";
-    #cpf;
+    description = "NODESCRIPTION";
+    cpf;
 
     //Methods
     constructor( name = "NONAME", email = "NOEMAIL", phone = "NOCELL", 
@@ -20,30 +21,25 @@ class Person{
             this.phone = phone;
             this.address = new Address(number, street, city, state, country, postcode);
             this.img = img;
-            this.#cpf = new Cpf();
+            this.cpf = new Cpf();
         }
         catch(e){
             throw new Error("ERRO: object cannot be created\n" + e);
         } 
+        this.description = this.toString();
     }
 
     toString() {
-        return `
-        Name: ${this.name}\n
-        CPF: ${this.#cpf.toString()}\n
-        Email: ${this.email}\n
-        phone: ${this.phone}\n
-        Address: ${this.address.toString()}
-        `
+        return `Name: ${this.name}\nCPF: ${this.cpf.toString()}\nEmail: ${this.email}\nPhone: ${this.phone}\nAddress: ${this.address.description}`;
     }
 
     //Getters
     get name() { return this.name; }
     get email() { return this.email; }
     get phone() { return this.phone; }
-    get address() { return this.address; }
+    get address() { return this.address.description(); }
     get img() { return this.img; }
-    get cpf() { return this.#cpf.toString(); }
+    get cpf() { return this.cpf.description(); }
 
     //Setters
     set name( name = "NONAME" ) {
