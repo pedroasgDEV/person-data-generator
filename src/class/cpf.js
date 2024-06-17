@@ -1,10 +1,12 @@
 class Cpf {
     //Atributes
     cpf = "NOCPF";
+    description = "NODESCRIPTION"
 
     //Methods
 	constructor() {
         this.cpf = this.generateCPF();
+        this.description = this.toString();
     }
 
     generateCPF() {
