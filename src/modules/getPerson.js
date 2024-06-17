@@ -16,6 +16,8 @@ async function getRequest ( qnt = 1 ) {
 //trata o json que foi requisitado
 async function getPerson ( qnt = 1 ) {
     
+    if(qnt > 1000) throw new Error("ERRO: 1000 is the limit request");
+
     if(qnt == 0) return [];
 
     const jsonIn = await getRequest( qnt );
