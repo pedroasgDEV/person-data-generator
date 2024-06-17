@@ -25,8 +25,12 @@ async function readFile () {
 
 //Add person ao arquivo
 async function updateFile ( qnt = 0 ) {
+    const jsonIn = await readFile();
+    const jsonAdd = await getPerson(qnt);
 
-    //Pega os novos dadosJSON.stringify(json, '', 2)o(json); //Sobreescreve o arquivo existente
+    const json = [...jsonIn, ...jsonAdd];
+
+    return await gravaArquivo(json);
 }
 
 //Limpa o arquivo
@@ -37,7 +41,7 @@ const args = process.argv.slice(2);
 switch(args[0]){
     case "clear": clearFile(); console.log("Arquivo limpo"); break; //limpa o arquivo
     case "read": readFile().then(json => 
-        (json) ? json.forEach((val, index) => console.log(`${index}: ${val.name}`)) :
+        (json) ? json.forEach((val, index) => console.log(`${index}: ${val.description}`)) :
                     console.log("Arquivo vazio")
     ); break; //Mostra o arquivo no terminal
     case "write": writeFile(Number(args[1])); break; //Escreve o arquivo com o proximo comando
