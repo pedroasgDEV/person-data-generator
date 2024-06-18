@@ -14,14 +14,14 @@ class Person{
     //Methods
     constructor( name = "NONAME", email = "NOEMAIL", phone = "NOCELL", 
         number = -1, street = "NOSTREET", city = "NOCITY", state = "NOSATATE",
-        country = "NOCOUNTRY", postcode = -1, img = "NOIMG" ) {
+        country = "NOCOUNTRY", postcode = -1, img = "NOIMG", cpf = "NOCPF" ) {
         try{
             this.name = name;
             this.email = email;
             this.phone = phone;
             this.address = new Address(number, street, city, state, country, postcode);
             this.img = img;
-            this.cpf = new Cpf();
+            this.cpf = new Cpf(cpf);
         }
         catch(e){
             throw new Error("ERRO: object cannot be created\n" + e);

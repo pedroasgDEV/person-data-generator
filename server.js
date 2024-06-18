@@ -15,10 +15,8 @@ app.set("view engine", "ejs");
 
 app.listen(PORT);
 
-//TODO reformular as rotas e add render
-//TODO add viwer
+
+
 //TODO add module to convert json em array
-//TODO finalisar frontend
+
 //TODO finalisar api
-//TODO integrar tudo
-//TODO finalizar o gerador de pessoas que mostra os dados das pessoas com imageem  

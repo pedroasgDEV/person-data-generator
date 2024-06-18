@@ -9,7 +9,7 @@
     <h1>Escolha quantas pessoas serão mostradas</h1>
     <form action="/" method="POST">
       <label for="count">Número de pessoas:</label>
-      <input type="number" id="count" name="count" min="1" max="100" required>
+      <input type="number" id="count" name="count" min="1" max="50c" required>
       <button type="submit">Mostrar</button>
     </form>
 
@@ -21,7 +21,7 @@
             <img src="<%= person.img %>" alt="<%= person.name %>">
             <div class="person-info">
                 <h3><%= person.name %></h3>
-                <p><%= person.description %></p>
+                <p><%= person.toString() %></p>
             </div>
           </li>
         <% }); %>

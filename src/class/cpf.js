@@ -4,8 +4,11 @@ class Cpf {
     description = "NODESCRIPTION"
 
     //Methods
-	constructor() {
-        this.cpf = this.generateCPF();
+	constructor(cpf = "NOCPF") {
+        if(cpf == "NOCPF" ) {
+            this.cpf = this.generateCPF();
+        }
+        else this.cpf = cpf;
         this.description = this.toString();
     }
 
