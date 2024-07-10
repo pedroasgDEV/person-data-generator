@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "arq": "node src/modules/randPerson.js",
     "run": "nodemon server.js & webpack -w",
-    "server" :  "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +16,11 @@
     "axios": "^1.7.2",
     "core-js": "^3.37.1",
     "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.0",
     "prompt-sync": "^4.2.0",
     "regenerator-runtime": "^0.14.1",
     "style-loader": "^4.0.0"

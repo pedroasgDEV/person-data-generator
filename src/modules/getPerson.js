@@ -4,16 +4,16 @@ const axios = require("axios");
 const { json } = require("express/lib/response");
 
 //links
-const href = "https://randomuser.me/api/?nat=br&results="; //Link que gera person e retorna um json
+const href = "https://randomuser.me/api/?nat=br&results=";
 
-//Faz a requisição no site
+//Api request
 async function getRequest ( qnt = 1 ) {
     if(!Number.isInteger(qnt)) throw new TypeError("A qunatidade precisa ser um numero");
-    const json = await axios(href + qnt); //Faz a requisição de um json com dados de person geradas aleatoriamente
-    return json.data.results; //Retorna o que leu
+    const json = await axios(href + qnt);
+    return json.data.results;
 }
 
-//trata o json que foi requisitado
+//Json process
 async function getPerson ( qnt = 1 ) {
     
     if(qnt > 1000) throw new Error("ERRO: 1000 is the limit request");
@@ -23,15 +23,12 @@ async function getPerson ( qnt = 1 ) {
     const jsonIn = await getRequest( qnt );
     const jsonOut = [];
 
-    //Variavel temporaria
     let person;
 
-    //Loop para processar o jsonIn
     for(let i = 0; i < jsonIn.length; i++){
 
         person = jsonIn[i];
 
-        //Cria um obj Person e add ao final da string
         jsonOut.push(
             new Person (
                 //name

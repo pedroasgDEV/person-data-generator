@@ -1,30 +1,30 @@
-//Modulos
+//Modules
 const fs = require("fs").promises;
 const Person = require("../class/person").Person;
 const path = require("path");
 const getPerson = require("./getPerson").getPerson;
-const file = path.resolve(__dirname, '..', '..', 'public', 'docs', 'randPerson.json'); //Caminho do arquivo local
+const file = path.resolve(__dirname, '..', '..', 'public', 'docs', 'randPerson.json');
 
-//Grava os json no arquivo local
+//Write in local .json
 async function gravaArquivo ( json ) {
-    const format = JSON.stringify(json, '', 2); //Formata o json
-    return await fs.writeFile(file, format, { flag : 'w'}); //Grava o json no arquivo
+    const format = JSON.stringify(json, '', 2); 
+    return await fs.writeFile(file, format, { flag : 'w'});
 }
 
-//Escreve no arquivo
+//Write file
 function writeFile ( qnt = 1 ) {
-    return getPerson(qnt) //Requisita o json do site
-    .then(json => gravaArquivo(json)) //Grava no arquivo o json
+    return getPerson(qnt) 
+    .then(json => gravaArquivo(json))
     .catch(e => console.error(e));
 }
 
-//Lé arquivo
+//Read file
 async function readFile_Json () {
-    const json = await fs.readFile(file, 'utf8'); //Lé os arquvios
-    return JSON.parse(json); //Formata o que leu e retorna
+    const json = await fs.readFile(file, 'utf8');
+    return JSON.parse(json);
 }
 
-//Add person ao arquivo
+//Update file
 async function updateFile ( qnt = 0 ) {
     const jsonIn = await readFile_Json();
     const jsonAdd = await getPerson(qnt);
@@ -34,10 +34,10 @@ async function updateFile ( qnt = 0 ) {
     return await gravaArquivo(json);
 }
 
-//Limpa o arquivo
+//Clear file
 const clearFile = () => fs.writeFile(file, JSON.stringify([], '', 2), { flag : 'w'});
 
-//Converte o que leu para Class Person
+//Person class converter
 async function readFile_Class(){
     //Lê o arquivo
     let json = await readFile_Json();
@@ -75,16 +75,16 @@ async function readFile_Class(){
     return json;
 }
 
-//manipulação do arquivo pelo terminal
+//Terminal file manipulation
 const args = process.argv.slice(2);
 switch(args[0]){
-    case "clear": clearFile(); console.log("Arquivo limpo"); break; //limpa o arquivo
+    case "clear": clearFile(); console.log("Arquivo limpo"); break;
     case "read": readFile_Class().then(json => 
         (json) ? json.forEach((val, index) => console.log(`${index}:\n${val}\n\n`)) :
                     console.log("Arquivo vazio")
-    ); break; //Mostra o arquivo no terminal
-    case "write": writeFile(Number(args[1])); break; //Escreve o arquivo com o proximo comando
-    case "update": updateFile(Number(args[1])); break; //Add ao arquivo com o proximo comando
+    ); break;
+    case "write": writeFile(Number(args[1])); break; 
+    case "update": updateFile(Number(args[1])); break;
 }
 
 module.exports = {

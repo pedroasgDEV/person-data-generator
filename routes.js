@@ -1,5 +1,4 @@
-//modulos
-const express = require('express');
+//modules
 const routes = express.Router();
 
 //Controlers
