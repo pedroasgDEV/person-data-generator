@@ -17,9 +17,10 @@ const app = express();
 dotenv.config();
 const url = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@person-data-generator.ckosrqe.mongodb.net/?retryWrites=true&w=majority&appName=person-data-generator`;
 mongoose.connect(url)
-    .then(() => {
+    .then( () => {
         event.emit("MONGO_CONECTION");
-    });
+    })
+    .catch( e => console.log(e));
 
 //Server conection
 app.use(express.urlencoded({extended: true}));
@@ -32,3 +33,8 @@ app.set("view engine", "ejs");
 
 //Server start
 event.on("MONGO_CONECTION", () => app.listen(PORT));
+
+//TODO - Finalizar implementação do mongodb
+//TODO - Implementar o crud do mongodb
+//TODO - Fazer deploy da aplicaçaõ em container
+//TODO - Otimizar api para ela gerar os proprios dados

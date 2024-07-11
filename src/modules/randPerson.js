@@ -1,6 +1,6 @@
 //Modules
 const fs = require("fs").promises;
-const Person = require("../class/person").Person;
+const Person = require("../classes/Person").Person;
 const path = require("path");
 const getPerson = require("./getPerson").getPerson;
 const file = path.resolve(__dirname, '..', '..', 'public', 'docs', 'randPerson.json');

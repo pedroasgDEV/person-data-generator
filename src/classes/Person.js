@@ -1,5 +1,5 @@
-const Cpf = require("./cpf").Cpf;
-const Address = require("./address").Address;
+const Cpf = require("./Cpf").Cpf;
+const Address = require("./Address").Address;
 class Person{
 
     //Atributes

@@ -1,5 +1,5 @@
 //Modules
-const Person = require("../class/person").Person;
+const Person = require("../classes/Person").Person;
 const axios = require("axios");
 const { json } = require("express/lib/response");
 
