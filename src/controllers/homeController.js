@@ -1,6 +1,6 @@
 //Modules
-const writeFile = require("../modules/randPerson").write;
-const readFile = require("../modules/randPerson").read_Class;
+const writeFile = require("../modules/fileCRUD").write;
+const readFile = require("../modules/fileCRUD").read_Class;
 
 //Get request
 function get (req, res) {
