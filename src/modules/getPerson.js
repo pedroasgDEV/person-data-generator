@@ -1,7 +1,7 @@
 //Modules
 const Person = require("../classes/Person").Person;
 const axios = require("axios");
-const { json } = require("express/lib/response");
+const PersonModel = require("../models/Person").Person;
 
 //links
 const href = "https://randomuser.me/api/?nat=br&results=";
@@ -57,6 +57,8 @@ async function getPerson ( qnt = 1 ) {
             )
         )
     }
+
+    PersonModel.create(jsonOut)
 
     return jsonOut;
 }
